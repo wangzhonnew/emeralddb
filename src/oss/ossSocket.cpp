@@ -62,7 +62,7 @@ _ossSocket::_ossSocket ( const char *pHostname, unsigned int port, int timeout )
 }
 
 // Create from a existing socket
-_ossSocket::_ossSocket ( int *sock, int timeout )
+_ossSocket::_ossSocket ( SOCKET *sock, int timeout )
 {
    int rc = EDB_OK ;
    _fd = *sock ;
@@ -182,7 +182,12 @@ int _ossSocket::send ( const char *pMsg, int len,
                       int timeout, int flags )
 {
    int rc = EDB_OK ;
-   int maxFD = _fd ;
+	SOCKET maxFD;
+#ifdef _WINDOWS
+	maxFD = 0;
+#else
+	maxFD = _fd ;
+#endif
    struct timeval maxSelectTime ;
    fd_set fds ;
 
@@ -198,7 +203,7 @@ int _ossSocket::send ( const char *pMsg, int len,
    {
       FD_ZERO ( &fds ) ;
       FD_SET ( _fd, &fds ) ;
-      rc = select ( maxFD + 1, NULL, &fds, NULL,
+      rc = select ( (int)(maxFD + 1), NULL, &fds, NULL,
                     timeout>=0?&maxSelectTime:NULL ) ;
       if ( 0 == rc )
       {
@@ -258,7 +263,7 @@ int _ossSocket::recv ( char *pMsg, int len,
 {
    int rc = EDB_OK ;
    int retries = 0 ;
-   int maxFD = _fd ;
+   int maxFD = (int)_fd ;
    struct timeval maxSelectTime ;
    fd_set fds ;
 
@@ -314,7 +319,7 @@ int _ossSocket::recv ( char *pMsg, int len,
       else
       {
          rc = SOCKET_GETLASTERROR ;
-         if ( ( EAGAIN == rc || EWOULDBLOCK == rc )  &&
+         if ( ( OSS_EAGAIN == rc || EWOULDBLOCK == rc )  &&
               _timeout >  0 )
          {
             PD_RC_CHECK ( EDB_NETWORK, PDERROR,
@@ -341,7 +346,7 @@ int _ossSocket::recvNF ( char *pMsg, int len,
 {
    int rc = EDB_OK ;
    int retries = 0 ;
-   int maxFD = _fd ;
+   int maxFD = (int)_fd ;
    struct timeval maxSelectTime ;
    fd_set fds ;
 
@@ -459,7 +464,7 @@ void _ossSocket::close ()
    if ( _init )
    {
       int i = 0 ;
-      i = ::close ( _fd ) ;
+      i = ::closesocket ( _fd ) ;
       if ( i < 0 )
       {
          i = -1 ;
@@ -468,11 +473,11 @@ void _ossSocket::close ()
    }
 }
 
-int _ossSocket::accept ( int *sock, struct sockaddr *addr, socklen_t *addrlen,
+int _ossSocket::accept ( SOCKET *sock, struct sockaddr *addr, socklen_t *addrlen,
                         int timeout )
 {
    int rc = EDB_OK ;
-   int maxFD = _fd ;
+   int maxFD = (int)_fd ;
    struct timeval maxSelectTime ;
 
    fd_set fds ;
@@ -568,6 +573,16 @@ done :
    return rc ;
 error :
    goto done ;
+}
+
+int _ossSocket::setAnsyn () 
+{
+#ifdef _WINDOWS
+	u_long nonblock = 1;
+	return ioctlsocket(_fd, FIONBIO, &nonblock);
+#else
+   return fcntl(_fd, F_SETFL, O_NONBLOCK | fcntl(_fd, F_GETFL, 0));
+#endif
 }
 
 unsigned int _ossSocket::getLocalPort ()
