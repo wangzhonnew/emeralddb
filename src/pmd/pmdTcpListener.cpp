@@ -39,7 +39,7 @@ int pmdTcpListenerEntryPoint ()
    // master loop for tcp listener
    while ( true )
    {
-      int s ;
+      SOCKET s ;
       rc = sock.accept ( &s, NULL, NULL ) ;
       // if we don't get anything from period of time, let's loop
       if ( EDB_TIMEOUT == rc )

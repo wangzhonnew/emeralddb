@@ -118,6 +118,8 @@ static _signalInfo signalHandleMap [] = {
 };
 
 #define PMD_MAX_SIGNALS 64
+
+#ifndef _WINDOWS
 static void pmdSignalHandler ( int sigNum )
 {
    if ( sigNum > 0 && sigNum <= PMD_MAX_SIGNALS )
@@ -128,8 +130,15 @@ static void pmdSignalHandler ( int sigNum )
       }
    }
 }
+#else
+static BOOL WINAPI pmdSignalHandler(DWORD dwCtrlType)
+{
+	EDB_SHUTDOWN_DB ;
+	return TRUE;
+}
+#endif // _WINDOWS
 
-
+#ifndef _WINDOWS
 static int pmdSetupSignalHandler ()
 {
    int rc = EDB_OK ;
@@ -145,15 +154,23 @@ static int pmdSetupSignalHandler ()
    }
    return rc ;
 }
+#endif
+
 
 int pmdMasterThreadMain ( int argc, char **argv )
 {
    int rc = EDB_OK ;
    EDB_KRCB *krcb = pmdGetKRCB () ;
 
+#ifndef _WINDOWS
+
    // signal handler
    rc = pmdSetupSignalHandler () ;
    PD_RC_CHECK ( rc, PDERROR, "Failed to setup signal handler, rc = %d", rc ) ;
+
+#else
+	SetConsoleCtrlHandler(&pmdSignalHandler, TRUE);
+#endif	// _WINDOWS
 
    // arguments
    rc = pmdResolveArguments ( argc, argv ) ;
