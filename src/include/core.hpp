@@ -55,7 +55,11 @@
 #include <iostream>
 
 #define OSS_MAX_PATHSIZE  PATH_MAX
+#if defined _WINDOWS
+#define OSS_FILE_SEP_STR  "\\"
+#else
 #define OSS_FILE_SEP_STR  "/"
+#endif
 #define OSS_FILE_SEP_CHAR *((const char*)OSS_FILE_SEP_STR)[0]
 #define OSS_NEWLINE       "\n"
 // error code list
