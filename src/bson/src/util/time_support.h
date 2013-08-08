@@ -22,6 +22,10 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/thread/xtime.hpp>
 
+#ifdef _WIN32
+#include <boost/thread/thread.hpp>	// for sleep
+#endif
+
 namespace bson {
 
     inline void time_t_to_Struct(time_t t, struct tm * buf , bool local = false)
