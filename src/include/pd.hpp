@@ -17,7 +17,7 @@
 #ifndef PD_HPP__
 #define PD_HPP__
 
-#include <string>
+#include "core.hpp"
 
 #define PD_LOG_STRINGMAX 4096
 

@@ -17,7 +17,18 @@
 #define OSSSOCKET_HPP__
 
 #include "core.hpp"
+
+#ifdef _WINDOWS
+#define SOCKET_GETLASTERROR WSAGetLastError()
+
+#define OSS_EAGAIN	WSAEINPROGRESS
+
+#else
 #define SOCKET_GETLASTERROR errno
+#define OSS_EAGAIN	EAGAIN
+#define closesocket	close
+
+#endif
 
 // by default 10ms timeout
 #define OSS_SOCKET_DFT_TIMEOUT 10000
@@ -26,10 +37,14 @@
 #define OSS_MAX_HOSTNAME NI_MAXHOST
 #define OSS_MAX_SERVICENAME NI_MAXSERV
 
+#ifndef _WINDOWS
+typedef int		SOCKET;
+#endif
+
 class _ossSocket
 {
 private :
-   int _fd ;
+   SOCKET _fd ;
    socklen_t _addressLen ;
    socklen_t _peerAddressLen ;
    struct sockaddr_in _sockAddress ;
@@ -48,7 +63,7 @@ public :
    // create a connection socket
    _ossSocket ( const char *pHostname, unsigned int port, int timeout = 0 ) ;
    // create from a existing socket
-   _ossSocket ( int *sock, int timeout = 0 ) ;
+   _ossSocket ( SOCKET *sock, int timeout = 0 ) ;
    ~_ossSocket ()
    {
       close () ;
@@ -56,6 +71,7 @@ public :
    int initSocket () ;
    int bind_listen () ;
    bool isConnected () ;
+   int setAnsyn() ;
    int send ( const char *pMsg, int len,
               int timeout = OSS_SOCKET_DFT_TIMEOUT,
               int flags = 0 ) ;
@@ -66,7 +82,7 @@ public :
                 int timeout = OSS_SOCKET_DFT_TIMEOUT ) ;
    int connect () ;
    void close () ;
-   int accept ( int *sock, struct sockaddr *addr, socklen_t *addrlen,
+   int accept ( SOCKET *sock, struct sockaddr *addr, socklen_t *addrlen,
                 int timeout = OSS_SOCKET_DFT_TIMEOUT ) ;
    int disableNagle () ;
    unsigned int getPeerPort () ;

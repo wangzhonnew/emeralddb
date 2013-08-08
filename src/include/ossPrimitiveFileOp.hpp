@@ -19,6 +19,49 @@
 
 #include "core.hpp"
 
+#ifdef _WINDOWS
+
+#include <io.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+
+#define OSS_F_GETLK        F_GETLK64
+#define OSS_F_SETLK        F_SETLK64
+#define OSS_F_SETLKW       F_SETLKW64
+
+#define oss_struct_statfs  struct statfs64
+#define oss_statfs         statfs64
+#define oss_fstatfs        fstatfs64
+#define oss_struct_statvfs struct statvfs64
+#define oss_statvfs        statvfs64
+#define oss_fstatvfs       fstatvfs64
+#define oss_struct_stat    struct _stati64
+#define oss_struct_flock   struct flock64
+#define oss_stat           stat64
+#define oss_lstat          lstat64
+#define oss_fstat          _fstati64
+#define oss_open           _open
+#define oss_lseek          _lseeki64
+#define oss_ftruncate      ftruncate64
+#define oss_off_t          __int64
+#define oss_close          _close
+#define oss_access         access
+#define oss_chmod          
+#define oss_read           read
+#define oss_write          write
+
+#define O_RDWR				_O_RDWR
+#define O_RDONLY			_O_RDONLY
+#define O_WRONLY			_O_WRONLY
+#define O_CREAT				_O_CREAT
+#define O_TRUNC				_O_TRUNC
+
+#define OSS_HANDLE			int
+#define OSS_INVALID_HANDLE_FD_VALUE (OSS_HANDLE(-1))
+#else
+
+#define OSS_HANDLE		   int
 #define OSS_F_GETLK        F_GETLK64
 #define OSS_F_SETLK        F_SETLK64
 #define OSS_F_SETLKW       F_SETLKW64
@@ -44,6 +87,10 @@
 #define oss_read           read
 #define oss_write          write
 
+#define OSS_INVALID_HANDLE_FD_VALUE (-1)
+
+#endif // _WINDOWS
+
 #define OSS_PRIMITIVE_FILE_OP_FWRITE_BUF_SIZE 2048
 #define OSS_PRIMITIVE_FILE_OP_READ_ONLY     (((unsigned int)1) << 1)
 #define OSS_PRIMITIVE_FILE_OP_WRITE_ONLY    (((unsigned int)1) << 2)
@@ -51,14 +98,12 @@
 #define OSS_PRIMITIVE_FILE_OP_OPEN_ALWAYS   (((unsigned int)1) << 4)
 #define OSS_PRIMITIVE_FILE_OP_OPEN_TRUNC    (((unsigned int)1) << 5)
 
-#define OSS_INVALID_HANDLE_FD_VALUE (-1)
-
 typedef oss_off_t offsetType ;
 
 class ossPrimitiveFileOp
 {
 public :
-   typedef  int    handleType ;
+   typedef  OSS_HANDLE    handleType ;
 private :
    handleType _fileHandle ;
    ossPrimitiveFileOp( const ossPrimitiveFileOp & ) {}
