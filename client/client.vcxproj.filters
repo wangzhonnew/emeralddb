@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="源文件\client">
+      <UniqueIdentifier>{2853481c-7ef1-4219-b88a-0fd1992b998d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\bson">
+      <UniqueIdentifier>{5ff24490-59ca-4ce9-a592-7eed0bce3aa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\oss">
+      <UniqueIdentifier>{0778b7c7-7a00-49fb-9b09-4080ecc4ba9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\pd">
+      <UniqueIdentifier>{6a4f35d7-de23-4e76-a2dd-cb285c9157e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="头文件\client">
+      <UniqueIdentifier>{57ca0cc6-1b0a-4256-ba34-bf370ff0ec34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\bson">
+      <UniqueIdentifier>{1655fa75-19c2-4a40-89bf-050a1d4a3269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\core">
+      <UniqueIdentifier>{17d3465d-d60e-4d05-925f-2732e715fa53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\client\command.cpp">
+      <Filter>源文件\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\client\commandFactory.cpp">
+      <Filter>源文件\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\client\edb.cpp">
+      <Filter>源文件\client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bson\src\lib\base64.cpp">
+      <Filter>源文件\bson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bson\src\bsonobj.cpp">
+      <Filter>源文件\bson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bson\src\util\json.cpp">
+      <Filter>源文件\bson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bson\src\lib\md5.cpp">
+      <Filter>源文件\bson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bson\src\lib\nonce.cpp">
+      <Filter>源文件\bson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bson\src\oid.cpp">
+      <Filter>源文件\bson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win\emeralddb_win.cpp">
+      <Filter>源文件\oss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oss\ossPrimitiveFileOp.cpp">
+      <Filter>源文件\oss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oss\ossSocket.cpp">
+      <Filter>源文件\oss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pd\pd.cpp">
+      <Filter>源文件\pd</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\bson\src\util\embedded_builder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pd.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pmd.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pmdOptions.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\stringdata.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\util\time_support.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\wininc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\client\command.hpp">
+      <Filter>头文件\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\client\commandFactory.hpp">
+      <Filter>头文件\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\client\edb.hpp">
+      <Filter>头文件\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\lib\atomic_int.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\lib\base64.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bson-inl.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bson.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bson_db.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bsonassert.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bsonelement.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bsonmisc.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bsonobj.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bsonobjbuilder.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bsonobjiterator.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\bsontypes.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\util\builder.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\util\hex.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\inline_decls.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\util\json.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\lib\md5.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\util\misc.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\lib\nonce.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\oid.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\util\optime.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\ordering.h">
+      <Filter>头文件\bson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\core.hpp">
+      <Filter>头文件\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\lib\md5.hpp">
+      <Filter>头文件\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossLatch.hpp">
+      <Filter>头文件\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossPrimitiveFileOp.hpp">
+      <Filter>头文件\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossQueue.hpp">
+      <Filter>头文件\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossSocket.hpp">
+      <Filter>头文件\core</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

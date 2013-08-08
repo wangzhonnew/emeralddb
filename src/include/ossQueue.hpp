@@ -53,7 +53,7 @@ public :
 
    bool try_pop ( Data &value )
    {
-      boost::mutex::scope_lock lock ( _mutex ) ;
+      boost::mutex::scoped_lock lock ( _mutex ) ;
       if ( _queue.empty () )
          return false ;
       value = _queue.front () ;
@@ -63,7 +63,7 @@ public :
 
    void wait_and_pop ( Data &value )
    {
-      boost::mutex::scope_lock lock ( _mutex ) ;
+      boost::mutex::scoped_lock lock ( _mutex ) ;
       while ( _queue.empty () )
       {
          _cond.wait ( lock ) ;
@@ -72,10 +72,10 @@ public :
       _queue.pop () ;
    }
 
-   bool time_wait_and_pop ( Data &value, long long millsec )
+   bool timed_wait_and_pop ( Data &value, long long millsec )
    {
       boost::system_time const timeout = boost::get_system_time () +
-            boost::posix_time::milliseconds(milsec) ;
+            boost::posix_time::milliseconds(millsec) ;
       boost::mutex::scoped_lock lock ( _mutex ) ;
       // if timed_wait return false, that means we failed by timeout
       while ( _queue.empty () )

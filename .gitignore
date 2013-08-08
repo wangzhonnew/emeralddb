@@ -28,7 +28,6 @@ local.properties
 # PDT-specific
 .buildpath
 
-
 #################
 ## Visual Studio
 #################
@@ -213,3 +212,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#############
+## boost
+#############
+boost/

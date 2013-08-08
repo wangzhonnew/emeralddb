@@ -49,19 +49,8 @@
    {if(!(cond)) { pdLog(PDERROR, __func__, __FILE__, __LINE__, str) ; \
     rc = ret; goto error ; }}
 
-#ifdef _DEBUG
-#define EDB_ASSERT(cond,str)                                          \
-   { if ( !(cond) ) {                                                 \
-      pdassert ( str,__func__, __FILE__,__LINE__);}}                  \
-
-#define EDB_CHECK(cond,str)                                           \
-   { if ( !(cond) ) {                                                 \
-      pdcheck ( str, __func__, __FILE__, __LINE__ ) ; }}              \
-
-#else
 #define EDB_ASSERT(cond,str)  {if(cond){}}
 #define EDB_CHECK(cond,str)   {if(cond){}}
-#endif
 
 enum PDLEVEL
 {

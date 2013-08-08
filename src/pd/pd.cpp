@@ -183,4 +183,3 @@ void pdLog ( PDLEVEL level, const char *func, const char *file,
    }
    return ;
 }
-

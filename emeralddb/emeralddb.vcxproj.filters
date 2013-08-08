@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="源文件\pmd">
+      <UniqueIdentifier>{69594fa8-8025-499e-b1a3-5dea68382e3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\pd">
+      <UniqueIdentifier>{32895e24-57a7-4492-8403-e5451bb0be0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\oss">
+      <UniqueIdentifier>{615dcc0f-5ef5-4d02-a437-0467da20a010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\win">
+      <UniqueIdentifier>{97e09012-7edd-478e-a1c3-ea1ca7275ecf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="头文件\include">
+      <UniqueIdentifier>{bb15b42c-a547-4f06-b757-01b3b7c39f5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\pmd\pmd.cpp">
+      <Filter>源文件\pmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmd\pmdMain.cpp">
+      <Filter>源文件\pmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmd\pmdOptions.cpp">
+      <Filter>源文件\pmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmd\pmdTcpListener.cpp">
+      <Filter>源文件\pmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pd\pd.cpp">
+      <Filter>源文件\pd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oss\ossPrimitiveFileOp.cpp">
+      <Filter>源文件\oss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oss\ossSocket.cpp">
+      <Filter>源文件\oss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\win\emeralddb_win.cpp">
+      <Filter>源文件\win</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmd\pmdAgent.cpp">
+      <Filter>源文件\pmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmd\pmdEDU.cpp">
+      <Filter>源文件\pmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmd\pmdEDUMgr.cpp">
+      <Filter>源文件\pmd</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\include\core.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bson\src\lib\md5.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossLatch.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossPrimitiveFileOp.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossQueue.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossSocket.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pd.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pmd.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pmdOptions.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\wininc.h">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pmdEDU.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pmdEDUEvent.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\pmdEDUMgr.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ossUtil.hpp">
+      <Filter>头文件\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\bson\APACHE-2.0.txt" />
+    <None Include="..\src\bson\GNU-AGPL-3.0.txt" />
+  </ItemGroup>
+</Project>

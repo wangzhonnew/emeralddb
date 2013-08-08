@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BC7A7064-C7B6-4885-89B5-ACE69AF4E3F9}</ProjectGuid>
+    <RootNamespace>client</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\boost\stage\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\boost\stage\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)/boost;$(SolutionDir)/src; $(SolutionDir)\src\bson\src;$(SolutionDir)\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCPRT /NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(SolutionDir)/boost;$(SolutionDir)/src; $(SolutionDir)\src\bson\src;$(SolutionDir)\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>/NODEFAULTLIB:MSVCPRT %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\client\command.cpp" />
+    <ClCompile Include="..\src\client\commandFactory.cpp" />
+    <ClCompile Include="..\src\client\edb.cpp" />
+    <ClCompile Include="..\src\bson\src\lib\base64.cpp" />
+    <ClCompile Include="..\src\bson\src\bsonobj.cpp" />
+    <ClCompile Include="..\src\bson\src\util\json.cpp" />
+    <ClCompile Include="..\src\bson\src\lib\md5.cpp" />
+    <ClCompile Include="..\src\bson\src\lib\nonce.cpp" />
+    <ClCompile Include="..\src\bson\src\oid.cpp" />
+    <ClCompile Include="..\src\win\emeralddb_win.cpp" />
+    <ClCompile Include="..\src\oss\ossPrimitiveFileOp.cpp" />
+    <ClCompile Include="..\src\oss\ossSocket.cpp" />
+    <ClCompile Include="..\src\pd\pd.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\bson\src\util\embedded_builder.h" />
+    <ClInclude Include="..\src\include\pd.hpp" />
+    <ClInclude Include="..\src\include\pmd.hpp" />
+    <ClInclude Include="..\src\include\pmdOptions.hpp" />
+    <ClInclude Include="..\src\bson\src\stringdata.h" />
+    <ClInclude Include="..\src\bson\src\util\time_support.h" />
+    <ClInclude Include="..\src\include\wininc.h" />
+    <ClInclude Include="..\src\client\command.hpp" />
+    <ClInclude Include="..\src\client\commandFactory.hpp" />
+    <ClInclude Include="..\src\client\edb.hpp" />
+    <ClInclude Include="..\src\bson\src\lib\atomic_int.h" />
+    <ClInclude Include="..\src\bson\src\lib\base64.h" />
+    <ClInclude Include="..\src\bson\src\bson-inl.h" />
+    <ClInclude Include="..\src\bson\src\bson.h" />
+    <ClInclude Include="..\src\bson\src\bson_db.h" />
+    <ClInclude Include="..\src\bson\src\bsonassert.h" />
+    <ClInclude Include="..\src\bson\src\bsonelement.h" />
+    <ClInclude Include="..\src\bson\src\bsonmisc.h" />
+    <ClInclude Include="..\src\bson\src\bsonobj.h" />
+    <ClInclude Include="..\src\bson\src\bsonobjbuilder.h" />
+    <ClInclude Include="..\src\bson\src\bsonobjiterator.h" />
+    <ClInclude Include="..\src\bson\src\bsontypes.h" />
+    <ClInclude Include="..\src\bson\src\util\builder.h" />
+    <ClInclude Include="..\src\bson\src\util\hex.h" />
+    <ClInclude Include="..\src\bson\src\inline_decls.h" />
+    <ClInclude Include="..\src\bson\src\util\json.h" />
+    <ClInclude Include="..\src\bson\src\lib\md5.h" />
+    <ClInclude Include="..\src\bson\src\util\misc.h" />
+    <ClInclude Include="..\src\bson\src\lib\nonce.h" />
+    <ClInclude Include="..\src\bson\src\oid.h" />
+    <ClInclude Include="..\src\bson\src\util\optime.h" />
+    <ClInclude Include="..\src\bson\src\ordering.h" />
+    <ClInclude Include="..\src\include\core.hpp" />
+    <ClInclude Include="..\src\bson\src\lib\md5.hpp" />
+    <ClInclude Include="..\src\include\ossLatch.hpp" />
+    <ClInclude Include="..\src\include\ossPrimitiveFileOp.hpp" />
+    <ClInclude Include="..\src\include\ossQueue.hpp" />
+    <ClInclude Include="..\src\include\ossSocket.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

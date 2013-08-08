@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "emeralddb", "emeralddb\emeralddb.vcproj", "{4AA4AC33-EFA2-4D6B-BA84-2E5534CBAD53}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "emeralddb", "emeralddb\emeralddb.vcxproj", "{4AA4AC33-EFA2-4D6B-BA84-2E5534CBAD53}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcproj", "{BC7A7064-C7B6-4885-89B5-ACE69AF4E3F9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcxproj", "{BC7A7064-C7B6-4885-89B5-ACE69AF4E3F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

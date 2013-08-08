@@ -17,6 +17,7 @@
 #include "pmd.hpp"
 #include "pmdOptions.hpp"
 #include "pd.hpp"
+#include "pmdEDUMgr.hpp"
 
 static int pmdResolveArguments ( int argc, char **argv )
 {
@@ -133,6 +134,7 @@ static void pmdSignalHandler ( int sigNum )
 #else
 static BOOL WINAPI pmdSignalHandler(DWORD dwCtrlType)
 {
+	PD_LOG ( PDERROR, "Shutdown Database" ) ;
 	EDB_SHUTDOWN_DB ;
 	return TRUE;
 }
@@ -161,7 +163,8 @@ int pmdMasterThreadMain ( int argc, char **argv )
 {
    int rc = EDB_OK ;
    EDB_KRCB *krcb = pmdGetKRCB () ;
-
+   pmdEDUMgr *eduMgr   = krcb->getEDUMgr () ;
+   EDUID      agentEDU = PMD_INVALID_EDUID ;
 #ifndef _WINDOWS
 
    // signal handler
@@ -169,7 +172,7 @@ int pmdMasterThreadMain ( int argc, char **argv )
    PD_RC_CHECK ( rc, PDERROR, "Failed to setup signal handler, rc = %d", rc ) ;
 
 #else
-	SetConsoleCtrlHandler(&pmdSignalHandler, TRUE);
+   SetConsoleCtrlHandler(&pmdSignalHandler, TRUE);
 #endif	// _WINDOWS
 
    // arguments
@@ -178,12 +181,15 @@ int pmdMasterThreadMain ( int argc, char **argv )
    {
       goto done ;
    }
-
    PD_RC_CHECK ( rc, PDERROR, "Failed to resolve argument, rc = %d", rc ) ;
+
+   rc = eduMgr->startEDU ( EDU_TYPE_TCPLISTENER, NULL, &agentEDU ) ;
+   PD_RC_CHECK ( rc, PDERROR, "Failed to start tcplistener edu, rc = %d", rc ) ;
    while ( EDB_IS_DB_UP )
    {
       sleep(1) ;
    }
+   eduMgr->reset () ;
 done :
    return rc ;
 error :
