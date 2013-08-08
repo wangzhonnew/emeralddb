@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "emeralddb", "emeralddb\emeralddb.vcproj", "{4AA4AC33-EFA2-4D6B-BA84-2E5534CBAD53}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "client", "client\client.vcproj", "{BC7A7064-C7B6-4885-89B5-ACE69AF4E3F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AA4AC33-EFA2-4D6B-BA84-2E5534CBAD53}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4AA4AC33-EFA2-4D6B-BA84-2E5534CBAD53}.Debug|Win32.Build.0 = Debug|Win32
+		{4AA4AC33-EFA2-4D6B-BA84-2E5534CBAD53}.Release|Win32.ActiveCfg = Release|Win32
+		{4AA4AC33-EFA2-4D6B-BA84-2E5534CBAD53}.Release|Win32.Build.0 = Release|Win32
+		{BC7A7064-C7B6-4885-89B5-ACE69AF4E3F9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BC7A7064-C7B6-4885-89B5-ACE69AF4E3F9}.Debug|Win32.Build.0 = Debug|Win32
+		{BC7A7064-C7B6-4885-89B5-ACE69AF4E3F9}.Release|Win32.ActiveCfg = Release|Win32
+		{BC7A7064-C7B6-4885-89B5-ACE69AF4E3F9}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
