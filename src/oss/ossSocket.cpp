@@ -15,6 +15,7 @@
 *******************************************************************************/
 #include "ossSocket.hpp"
 #include "pd.hpp"
+
 // Create a listening socket
 _ossSocket::_ossSocket ( unsigned int port, int timeout )
 {
@@ -216,7 +217,7 @@ int _ossSocket::send ( const char *pMsg, int len,
       {
          rc = SOCKET_GETLASTERROR ;
          // if we failed due to interrupt, let's continue
-         if ( EINTR == rc )
+         if ( OSS_EINTR == rc )
          {
             continue ;
          }
@@ -287,7 +288,7 @@ int _ossSocket::recv ( char *pMsg, int len,
       if ( 0 > rc )
       {
          rc = SOCKET_GETLASTERROR ;
-         if ( EINTR==rc )
+         if ( OSS_EINTR==rc )
          {
             continue ;
          }
@@ -325,7 +326,7 @@ int _ossSocket::recv ( char *pMsg, int len,
             PD_RC_CHECK ( EDB_NETWORK, PDERROR,
                           "Recv() timeout: rc = %d", rc ) ;
          }
-         if ( ( EINTR == rc ) && (retries < MAX_RECV_RETRIES ) )
+         if ( ( OSS_EINTR == rc ) && (retries < MAX_RECV_RETRIES ) )
          {
             retries ++ ;
             continue ;
@@ -375,7 +376,7 @@ int _ossSocket::recvNF ( char *pMsg, int len,
       {
          rc = SOCKET_GETLASTERROR ;
          // if we failed due to interrupt, let's continue
-         if ( EINTR == rc )
+         if ( OSS_EINTR == rc )
          {
             continue ;
          }
@@ -414,7 +415,7 @@ int _ossSocket::recvNF ( char *pMsg, int len,
          PD_RC_CHECK ( EDB_NETWORK, PDERROR,
                        "Recv() timeout: rc = %d", rc ) ;
       }
-      if ( ( EINTR == rc ) && ( retries < MAX_RECV_RETRIES ) )
+      if ( ( OSS_EINTR == rc ) && ( retries < MAX_RECV_RETRIES ) )
       {
          // less than max_recv_retries number, let's retry
          retries ++ ;
@@ -502,7 +503,7 @@ int _ossSocket::accept ( SOCKET *sock, struct sockaddr *addr, socklen_t *addrlen
       {
          rc = SOCKET_GETLASTERROR ;
          // if we failed due to interrupt, let's continue
-         if ( EINTR == rc )
+         if ( OSS_EINTR == rc )
          {
             continue ;
          }

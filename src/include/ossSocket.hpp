@@ -22,10 +22,12 @@
 #define SOCKET_GETLASTERROR WSAGetLastError()
 
 #define OSS_EAGAIN	WSAEINPROGRESS
+#define OSS_EINTR	WSAEINTR
 
 #else
 #define SOCKET_GETLASTERROR errno
 #define OSS_EAGAIN	EAGAIN
+#define OSS_EINTR	EINTR
 #define closesocket	close
 
 #endif
