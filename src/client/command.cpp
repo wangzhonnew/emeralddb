@@ -245,6 +245,11 @@ error :
 int ConnectCommand::execute( ossSocket & sock, std::vector<std::string> & argVec )
 {
    int ret = EDB_OK;
+   if(argVec.size() < 2)
+   {
+      printf("too little argument for fuction: ConnectCommand::execute()\n");
+      goto error;
+   }
    _address = argVec[0];
    _port = atoi(argVec[1].c_str());
    sock.close();
