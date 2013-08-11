@@ -248,7 +248,7 @@ int ConnectCommand::execute( ossSocket & sock, std::vector<std::string> & argVec
    if(argVec.size() < 2)
    {
       printf("too little argument for fuction: ConnectCommand::execute()\n");
-      goto error;
+      return getError(EDB_QUERY_INVALID_ARGUMENT);
    }
    _address = argVec[0];
    _port = atoi(argVec[1].c_str());
