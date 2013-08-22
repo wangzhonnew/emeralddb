@@ -34,6 +34,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="源文件\msg">
+      <UniqueIdentifier>{dea0c3b4-bf7e-46aa-ba33-e7c5b70d79a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\client\command.cpp">
@@ -74,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="..\src\pd\pd.cpp">
       <Filter>源文件\pd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\msg\msg.cpp">
+      <Filter>源文件\msg</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="..\src\include\ossSocket.hpp">
       <Filter>头文件\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\msg.hpp">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

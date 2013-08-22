@@ -3,10 +3,10 @@
 
 #ifdef _WINDOWS
 
-#include <winsock2.h>
-#include <windows.h>
-#include <limits.h>
 #include <ws2tcpip.h>
+#include <windows.h>
+#include <WinBase.h>
+#include <limits.h>
 
 #define PATH_MAX	512
 #define __func__	__FUNCTION__

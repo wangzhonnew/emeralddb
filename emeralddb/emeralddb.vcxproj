@@ -98,6 +98,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\msg\msg.cpp" />
     <ClCompile Include="..\src\pmd\pmd.cpp" />
     <ClCompile Include="..\src\pmd\pmdAgent.cpp" />
     <ClCompile Include="..\src\pmd\pmdEDU.cpp" />
@@ -113,6 +114,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\include\core.hpp" />
     <ClInclude Include="..\src\bson\src\lib\md5.hpp" />
+    <ClInclude Include="..\src\include\msg.hpp" />
     <ClInclude Include="..\src\include\ossLatch.hpp" />
     <ClInclude Include="..\src\include\ossPrimitiveFileOp.hpp" />
     <ClInclude Include="..\src\include\ossQueue.hpp" />
