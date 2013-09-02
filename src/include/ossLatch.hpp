@@ -42,7 +42,7 @@
 #define oss_mutex_init					pthread_mutex_init
 #define oss_mutex_destroy				pthread_mutex_destroy
 #define oss_mutex_lock					pthread_mutex_lock
-#define oss_mutex_trylock				pthread_mutex_trylock
+#define oss_mutex_trylock(__lock)	(pthread_mutex_trylock( (__lock) ) == 0 )
 #define oss_mutex_unlock				pthread_mutex_unlock
 
 #define oss_rwlock_t					pthread_rwlock_t
