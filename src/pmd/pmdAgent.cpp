@@ -48,7 +48,7 @@ static int pmdProcessAgentRequest ( char *pReceiveBuffer,
    int opCode                       = header->opCode ;
    EDB_KRCB *krcb                   = pmdGetKRCB () ;
    // get rtn
-
+   rtn *rtnMgr                      = krcb->getRtnMgr() ;
    *disconnect                      = false ;
 
    // check if the package length is valid
@@ -81,6 +81,21 @@ static int pmdProcessAgentRequest ( char *pReceiveBuffer,
             PD_LOG ( PDEVENT,
                      "Insert: insertor: %s",
                      insertor.toString().c_str() ) ;
+            // make sure _id is included
+            BSONObjIterator it ( insertor ) ;
+            BSONElement ele = *it ;
+            const char *tmp = ele.fieldName () ;
+            rc = strcmp ( tmp, gKeyFieldName ) ;
+            if ( rc )
+            {
+               PD_LOG ( PDERROR,
+                        "First element in inserted record is not _id" ) ;
+               probe = 25 ;
+               rc = EDB_NO_ID ;
+               goto error ;
+            }
+            // insert record
+            rc = rtnMgr->rtnInsert ( insertor ) ;
          }
          catch ( std::exception &e )
          {
@@ -108,22 +123,7 @@ static int pmdProcessAgentRequest ( char *pReceiveBuffer,
          PD_LOG ( PDEVENT,
                   "Query condition: %s",
                   recordID.toString().c_str() ) ;
-         try
-         {
-            BSONObjBuilder b ;
-            b.append ( "query", "test" ) ;
-            b.append ( "result", 10 ) ;
-            retObj = b.obj () ;
-         }
-         catch ( std::exception &e )
-         {
-            PD_LOG ( PDERROR,
-                     "Failed to create return BSONObj: %s",
-                     e.what() ) ;
-            probe = 55 ;
-            rc = EDB_INVALIDARG ;
-            goto error ;
-         }
+         rc = rtnMgr->rtnFind ( recordID, retObj ) ;
       }
       else if ( OP_DELETE == opCode )
       {
@@ -141,6 +141,7 @@ static int pmdProcessAgentRequest ( char *pReceiveBuffer,
          PD_LOG ( PDEVENT,
                   "Delete condition: %s",
                   recordID.toString().c_str() ) ;
+         rc = rtnMgr->rtnRemove ( recordID ) ;
       }
       else if ( OP_SNAPSHOT == opCode )
       {
@@ -252,7 +253,7 @@ int pmdAgentEntryPoint ( pmdEDUCB *cb, void *arg )
 
    // receive socket from argument
    int s                 = *(( int *) &arg ) ;
-   ossSocket sock ( (SOCKET*)&s ) ;
+   ossSocket sock ( &s ) ;
    sock.disableNagle () ;
 
    // allocate memory for receive buffer

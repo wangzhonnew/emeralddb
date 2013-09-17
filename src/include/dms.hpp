@@ -40,7 +40,7 @@ extern const char *gKeyFieldName ;
 struct dmsRecord
 {
    unsigned int _size ;
-   unsigned int _floag ;
+   unsigned int _flag ;
    char         _data[0] ;
 } ;
 
@@ -115,7 +115,7 @@ public :
    // insert into file
    int insert ( bson::BSONObj &record, bson::BSONObj &outRecord, dmsRecordID &rid ) ;
    int remove ( dmsRecordID &rid ) ;
-   int find ( dmsRecord &rid, bson::BSONObj &result ) ;
+   int find ( dmsRecordID &rid, bson::BSONObj &result ) ;
 private :
    // create a new segment for the current file
    int _extendSegment () ;

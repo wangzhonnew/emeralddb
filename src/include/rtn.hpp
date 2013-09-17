@@ -13,20 +13,25 @@
    You should have received a copy of the GNU Affero General Public License
    along with this program. If not, see <http://www.gnu.org/license/>.
 *******************************************************************************/
-#include "pmd.hpp"
-#include "pmdOptions.hpp"
-#include "pd.hpp"
+#ifndef RTN_HPP__
+#define RTN_HPP__
 
-EDB_KRCB pmd_krcb ;
-extern char _pdDiagLogPath [ OSS_MAX_PATHSIZE+1 ] ;
-int EDB_KRCB::init ( pmdOptions *options )
+#include "bson.h"
+#include "dms.hpp"
+// define the storage file name
+#define RTN_FILE_NAME "data.1"
+
+class rtn
 {
-   setDBStatus ( EDB_DB_NORMAL ) ;
-   setDataFilePath ( options->getDBPath () ) ;
-   setLogFilePath ( options->getLogPath () ) ;
-   strncpy ( _pdDiagLogPath, getLogFilePath(), sizeof(_pdDiagLogPath) ) ;
-   setSvcName ( options->getServiceName () ) ;
-   setMaxPool ( options->getMaxPool () ) ;
-   return _rtnMgr.rtnInitialize() ;
-}
+private :
+   dmsFile           *_dmsFile ;
+public :
+   rtn () ;
+   ~rtn() ;
+   int rtnInitialize () ;
+   int rtnInsert ( bson::BSONObj &record ) ;
+   int rtnFind ( bson::BSONObj &inRecord, bson::BSONObj &outRecord ) ;
+   int rtnRemove ( bson::BSONObj &record ) ;
+} ;
 
+#endif
