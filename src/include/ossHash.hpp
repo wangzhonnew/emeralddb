@@ -13,27 +13,10 @@
    You should have received a copy of the GNU Affero General Public License
    along with this program. If not, see <http://www.gnu.org/license/>.
 *******************************************************************************/
-#ifndef RTN_HPP__
-#define RTN_HPP__
+#ifndef OSSHASH_HPP_
+#define OSSHASH_HPP_
 
-#include "bson.h"
-#include "dms.hpp"
-#include "ixmBucket.hpp"
-// define the storage file name
-#define RTN_FILE_NAME "data.1"
-
-class rtn
-{
-private :
-   dmsFile           *_dmsFile ;
-   ixmBucketManager  *_ixmBucketMgr ;
-public :
-   rtn () ;
-   ~rtn() ;
-   int rtnInitialize () ;
-   int rtnInsert ( bson::BSONObj &record ) ;
-   int rtnFind ( bson::BSONObj &inRecord, bson::BSONObj &outRecord ) ;
-   int rtnRemove ( bson::BSONObj &record ) ;
-} ;
+unsigned int ossHash ( const char *data, int len ) ;
 
 #endif
+

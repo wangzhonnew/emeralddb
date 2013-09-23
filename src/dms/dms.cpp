@@ -19,10 +19,11 @@ using namespace bson ;
 
 const char *gKeyFieldName = DMS_KEY_FIELDNAME ;
 
-dmsFile::dmsFile () :
+dmsFile::dmsFile ( ixmBucketManager *ixmBucketMgr ) :
 _header(NULL),
 _pFileName(NULL)
 {
+   _ixmBucketMgr = ixmBucketMgr ;
 }
 
 dmsFile::~dmsFile ()
@@ -364,6 +365,7 @@ int dmsFile::_extendSegment ()
       memcpy ( data+i, (char*)&pageHeader, sizeof(dmsPageHeader) ) ;
    }
 
+   _mutex.get() ;
    // free space handling
    freeMapSize = _freeSpaceMap.size () ;
    // insert into free space map
@@ -376,6 +378,7 @@ int dmsFile::_extendSegment ()
    // push the segment into body list
    _body.push_back ( data ) ;
    _header->_size += DMS_PAGES_PER_SEGMENT ;
+   _mutex.release() ;
 done :
    return rc ;
 error :
@@ -520,6 +523,22 @@ int dmsFile::_loadData ()
             slotID = ( SLOTID ) pageHeader->_numSlots ;
             recordID._pageID = (PAGEID) k ;
             // for each record in the page, let's insert into index
+            for ( unsigned int s = 0; s < slotID; ++s )
+            {
+               slotOffset = *(SLOTOFF*)(data+k*DMS_PAGESIZE +
+                            sizeof(dmsPageHeader ) + s*sizeof(SLOTID) ) ;
+               if ( DMS_SLOT_EMPTY == slotOffset )
+               {
+                  continue ;
+               }
+               bson = BSONObj ( data + k*DMS_PAGESIZE +
+                                slotOffset + sizeof(dmsRecord) ) ;
+               recordID._slotID = (SLOTID)s ;
+               rc = _ixmBucketMgr->isIDExist ( bson ) ;
+               PD_RC_CHECK ( rc, PDERROR, "Failed to call isIDExist, rc = %d", rc ) ;
+               rc = _ixmBucketMgr->createIndex ( bson, recordID ) ;
+               PD_RC_CHECK ( rc, PDERROR, "Failed to call ixm createIndex, rc = %d", rc ) ;
+            }
          }
       } // for ( int i = 0; i < numSegments; ++i )
    } // if ( numSegments > 0 )
