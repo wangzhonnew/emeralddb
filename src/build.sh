@@ -1,3 +1,6 @@
+#################################
+# Build script for EmeraldDB    #
+#################################
 #!/bin/sh
 rm configure.in
 autoscan

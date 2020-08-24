@@ -17,7 +17,9 @@ edb_SOURCES=\
    pd/pd.cpp msg/msg.cpp
 
 emeralddb_CXXFLAGS=-I../boost -Ibson/src -Iinclude -D_FILE_OFFSET_BITS=64 -ggdb -Wall -O0
+
 emeralddb_LDADD=-lpthread -lm -lboost_system -lboost_thread -lboost_program_options -lrt
+
 emeralddb_LDFLAGS=-fPIC -rdynamic -L../boost/stage/lib -pthread
 
 edb_CXXFLAGS=-I../boost -Ibson/src -Iinclude -D_FILE_OFFSET_BITS=64 -ggdb -Wall -O0
